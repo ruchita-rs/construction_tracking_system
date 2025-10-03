@@ -3,7 +3,7 @@ const { connectDatabase, disconnectDatabase } = require('./src/db/db');
 const dotenv = require('dotenv');
 const cors = require("cors");
 const morgan = require("morgan");
-// const routes = require('./src/routes/routes');
+const routes = require('./src/routes/routes');
 const fs = require('fs');
 dotenv.config();
 const path = require("path");
@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 //routes
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use("/getFiles", express.static(path.join(__dirname, "")));
-// app.use('/', routes);
+app.use('/', routes);
 app.get("/", (request, response) => {
     response.status(200).json({
         message: "Construction tracking system backend running successfully",
